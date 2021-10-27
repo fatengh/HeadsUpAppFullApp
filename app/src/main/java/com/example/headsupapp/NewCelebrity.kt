@@ -18,6 +18,8 @@ class NewCelebrity : AppCompatActivity() {
     private lateinit var etT3: EditText
     private lateinit var btnAdd: Button
     private lateinit var btnReturn: Button
+    lateinit var celebDB: CelebrityDatabase
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,18 +42,22 @@ class NewCelebrity : AppCompatActivity() {
     }
 
     private fun addCelebrity() {
+        celebDB = CelebrityDatabase.getInstance(applicationContext)
+
         if (etName.text.isNotEmpty() && etT1.text.isNotEmpty() &&
             etT2.text.isNotEmpty() && etT3.text.isNotEmpty()
         ) {
-            var dbhr = DBHlpr(applicationContext)
 
-            var s = dbhr.saveData(
-                etName.text.toString(),
-                etT1.text.toString(),
-                etT2.text.toString(),
-                etT3.text.toString()
+            celebDB.CelebrityDoa().addCelebrity(
+                Celebrity(
+                    name = etName.text.toString(),
+                    taboo1 = etT1.text.toString(),
+                    taboo2 = etT2.text.toString(),
+                    taboo3 = etT3.text.toString()
+                )
             )
-            Toast.makeText(this, "clebrity added $s", Toast.LENGTH_LONG).show()
+
+            Toast.makeText(this, "clebrity added ", Toast.LENGTH_LONG).show()
 
         } else {
             Toast.makeText(this, "One or more fields is empty", Toast.LENGTH_LONG).show()

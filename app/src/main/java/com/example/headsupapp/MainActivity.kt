@@ -13,7 +13,7 @@ import kotlin.random.Random
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var dbHlpr: DBHlpr
+    lateinit var dbRoom: CelebrityDatabase
     private lateinit var llTime: LinearLayout
     private lateinit var llStart: LinearLayout
     private lateinit var llCeleb: LinearLayout
@@ -25,7 +25,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvHead: TextView
     private lateinit var btnStart: Button
     private lateinit var btnAdd: Button
-    private  var list=ArrayList<Celebrity>()
+    private lateinit var btnedit: Button
+
+    lateinit  var list: List<Celebrity>
+
+
 
     private var Activeplay = false
 
@@ -43,10 +47,13 @@ class MainActivity : AppCompatActivity() {
         tvT3 = findViewById(R.id.tvT3)
         tvHead = findViewById(R.id.tvHead)
         btnStart = findViewById(R.id.btnStart)
+        btnedit = findViewById(R.id.btnedit)
+
+
+
         btnAdd = findViewById(R.id.btnAdd)
-        dbHlpr=DBHlpr(applicationContext)
-        list = dbHlpr.retrive()
-        dbHlpr= DBHlpr(applicationContext)
+        dbRoom=CelebrityDatabase.getInstance(applicationContext)
+        list=dbRoom.CelebrityDoa().getAllData()
         btnStart.setOnClickListener {
             newTimer()
 
@@ -56,6 +63,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+
 
 
     }

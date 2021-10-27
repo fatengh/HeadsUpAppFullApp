@@ -44,22 +44,6 @@
         </ScrollView>
 
         <EditText
-            android:id="@+id/edIDel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:ems="10"
-            android:hint="write id "
-            android:inputType="number" />
-
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="delete" />
-
-        <EditText
             android:id="@+id/edUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
