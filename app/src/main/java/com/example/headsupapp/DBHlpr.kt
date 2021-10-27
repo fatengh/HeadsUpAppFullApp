@@ -68,4 +68,16 @@ class DBHlpr(context: Context?) : SQLiteOpenHelper(context, "headsUp.db", null, 
         return celebrities
 
     }
+    fun update(pk:Int, name:String,t1:String,t2:String,t3:String){
+        val cv=ContentValues()
+        cv.put("Name",name)
+        cv.put("Taboo1",t1)
+        cv.put("Taboo2",t2)
+        cv.put("Taboo3",t3)
+        sqlDB.update("Celebrity",cv,"Pk=?", arrayOf(pk.toString()))
+
+    }
+    fun delete(pk:Int) {
+        sqlDB.delete("Celebrity","Pk=?", arrayOf(pk.toString()))
+    }
 }
